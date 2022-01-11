@@ -1,0 +1,492 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Scripts/Main.cs" type="Script" id=1]
+[ext_resource path="res://Images/ExitButton.png" type="Texture" id=2]
+[ext_resource path="res://Images/MinButton.png" type="Texture" id=3]
+[ext_resource path="res://Images/ImageFrame.png" type="Texture" id=4]
+[ext_resource path="res://Images/FolderButton.png" type="Texture" id=5]
+[ext_resource path="res://Images/ArrowButton.png" type="Texture" id=6]
+[ext_resource path="res://Font/ExpressionPro.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Images/YIcon.png" type="Texture" id=8]
+[ext_resource path="res://Images/FolderSelect.png" type="Texture" id=9]
+[ext_resource path="res://Images/NinePatchTest.png" type="Texture" id=10]
+[ext_resource path="res://Images/CopyButton.png" type="Texture" id=11]
+[ext_resource path="res://Font/FutilePro.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://DefaultTheme.tres" type="Theme" id=13]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0862745, 0.0666667, 0.0666667, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="DynamicFont" id=3]
+size = 17
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.117647, 0.117647, 0.117647, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+shadow_color = Color( 0, 0, 0, 0.313726 )
+shadow_size = 5
+shadow_offset = Vector2( 0, 5 )
+
+[sub_resource type="GradientTexture" id=12]
+width = 1
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.839216, 0.839216, 0.839216, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 7 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=8]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 12 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+_grabbedImage = NodePath("MainPanel/GrabbedImage")
+_exitButPath = NodePath("TopPanel/ExitBut")
+_minButPath = NodePath("TopPanel/MinBut")
+_wallStyleMenuPath = NodePath("MainPanel/RightClickMenu/WallStyleMenu")
+_convertButPath = NodePath("ConvertButton")
+_navRightPath = NodePath("NavigateRight")
+_navLeftPath = NodePath("NavigateLeft")
+_filenameLabel = NodePath("MainPanel/TextureRect/FilenameLabel")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 1.0
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainPanel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -292.0
+margin_top = -262.0
+margin_right = 292.0
+margin_bottom = 106.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightClickMenu" type="PopupMenu" parent="MainPanel"]
+margin_left = 226.0
+margin_top = 120.0
+margin_right = 358.0
+margin_bottom = 172.0
+theme = ExtResource( 13 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/panel = SubResource( 2 )
+items = [ "SetAsWallpaper...", null, 0, false, false, 0, 0, null, "", false, "DeleteFile...", null, 0, false, false, 1, 0, null, "", false, "SetWallpaperSlideShow...", null, 0, false, false, 2, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WallStyleMenu" type="PopupMenu" parent="MainPanel/RightClickMenu"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -178.0
+margin_top = -30.0
+margin_bottom = 30.0
+theme = ExtResource( 13 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GrabbedImage" type="TextureRect" parent="MainPanel"]
+anchor_left = 0.0136986
+anchor_top = 0.0271739
+anchor_right = 0.986301
+anchor_bottom = 0.940217
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="MainPanel"]
+self_modulate = Color( 1, 1, 1, 0.74902 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 10.0
+margin_right = -8.0
+margin_bottom = -326.0
+texture = SubResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FilenameLabel" type="Label" parent="MainPanel/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 13 )
+custom_colors/font_color = Color( 1, 1, 1, 0.494118 )
+text = "IMAGE NAME GOES HERE"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImageBorder" type="TextureRect" parent="MainPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -291.0
+margin_top = -182.0
+margin_right = 293.0
+margin_bottom = 170.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopPanel" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_bottom = 32.0
+mouse_filter = 1
+mouse_default_cursor_shape = 6
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinBut" type="TextureButton" parent="TopPanel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -66.0
+margin_top = -13.0
+margin_right = -40.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 13, 13 )
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitBut" type="TextureButton" parent="TopPanel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -13.0
+margin_right = -6.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 13, 13 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WindowName" type="Label" parent="TopPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -39.5
+margin_top = -9.0
+margin_right = 39.5
+margin_bottom = 9.0
+theme = SubResource( 6 )
+text = "SPOTYOINK"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="TopPanel"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 7.0
+margin_top = -8.0
+margin_right = 23.0
+margin_bottom = 8.0
+mouse_default_cursor_shape = 2
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -292.0
+margin_top = -205.0
+margin_right = 292.0
+margin_bottom = -92.0
+rect_clip_content = true
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="InfoPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileOperations" type="RichTextLabel" parent="InfoPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+This is where the program will let the user know what's going on...
+"
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FolderPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -292.0
+margin_top = -35.0
+margin_right = 292.0
+margin_bottom = -12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDiagButton" type="TextureButton" parent="FolderPanel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -31.0
+margin_top = -15.5
+margin_right = 1.0
+margin_bottom = 12.5
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource( 9 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserDir" type="LineEdit" parent="FolderPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_right = -32.0
+margin_bottom = 1.0
+grow_vertical = 2
+custom_colors/font_color_uneditable = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 10 )
+custom_styles/read_only = SubResource( 9 )
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+placeholder_text = "Please Select Directory To Save Images >>>>>>>>>>>>>>>>"
+placeholder_alpha = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="FolderPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -32.0
+margin_bottom = 1.0
+texture = ExtResource( 10 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConvertButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -84.0
+margin_right = 50.0
+margin_bottom = -44.0
+rect_pivot_offset = Vector2( 50, 20 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ConvertButton"]
+anchor_right = 1.0
+margin_top = 1.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 11 )
+text = "YOINK"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NavigateRight" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 77.0
+margin_top = -84.0
+margin_right = 117.0
+margin_bottom = -44.0
+rect_pivot_offset = Vector2( 20, 20 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NavigateLeft" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -118.0
+margin_top = -84.0
+margin_right = -78.0
+margin_bottom = -44.0
+rect_rotation = 180.0
+rect_pivot_offset = Vector2( 20, 20 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -248.0
+margin_top = -182.0
+margin_right = 249.0
+margin_bottom = 192.0
+mouse_default_cursor_shape = 2
+theme = ExtResource( 13 )
+custom_icons/folder = ExtResource( 5 )
+window_title = "Open a Directory"
+mode = 2
+access = 2
+show_hidden_files = true
+current_dir = "/Godot Projects/WinYoink"
+current_path = "/Godot Projects/WinYoink/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
