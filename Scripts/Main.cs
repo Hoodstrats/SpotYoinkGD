@@ -75,7 +75,7 @@ namespace Hoodstrats.Core
       Display → Window → Per Pixel Transparency → Enabled
       Display → Window → Per Pixel Transparency → Splash (only if the splash screen requires it)
 
-      -- Add this line to code make sure it runs -- 
+      -- Add this line to code make sure it runs --
       GetViewport().TransparentBg = true;
 
       */
@@ -167,7 +167,7 @@ namespace Hoodstrats.Core
       _wallStyleMenu.Connect("index_pressed", this, nameof(WallSelectOpen));
     }
     //make a pop up window come up confirming if they want to use the default pictures location program sets itself instead of creating/choosing folder
-    //toggle can convert to true and toggle buttons 
+    //toggle can convert to true and toggle buttons
     private void ConvertPressed()
     {
       if (FileOperations.SelectedDir != string.Empty)
@@ -226,7 +226,7 @@ namespace Hoodstrats.Core
     }
     private void RightClickSelect(int index)
     {
-      //right click menu logic based on the index of the items 
+      //right click menu logic based on the index of the items
       GD.Print($"Selected{index}");
       if (index == 0)
       {
