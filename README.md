@@ -14,7 +14,7 @@
 - Can also delete the file directly by right clicking but this time choosing delete
 
 ---
-###### How it works
+### How it works
 - Windows actually stores the wallpapers it uses for the login screen temporarily in a folder located at:`Appdata\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets";
 - The files don't have an extension and are a mixed batch of different sizes/aspect ratios
 - What this tool does:
@@ -24,6 +24,10 @@
 	-  Copy them all to the new folder stated above
 
 ---
-##### Screenshots
+### Credits
+- FutilePro pixel font used was made by: https://www.patreon.com/posts/futile-pro-21019271
+
+---
+### Screenshots
 ![Idle](/_screenshots/regular.png)
 ![Rigtclicked](/_screenshots/rightclicked.png)
