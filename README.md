@@ -25,7 +25,7 @@
 
 ---
 ### Credits
-- FutilePro pixel font used was made by: https://www.patreon.com/posts/futile-pro-21019271
+- Pixel used: "FutilePro" made by: https://www.patreon.com/posts/futile-pro-21019271
 
 ---
 ### Screenshots
